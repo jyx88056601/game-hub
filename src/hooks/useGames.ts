@@ -1,28 +1,25 @@
 import { CanceledError } from "axios";
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
+export interface Game {
+  id: number;
+  name: string;
+  background_image: string
+}
+
+export interface FetchGamesResponse {
+  results: Game[];
+}
+
 const useGames = ()=> {
 
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
 
-  interface Game {
-    id: number;
-    name: string;
-  }
   
-  interface FetchGamesResponse {
-    id: number;
-    count: number;
-    name: string;
-    next: string;
-    previous: string;
-    results: Game[];
-  }
   
   useEffect(() => {
     const controller = new AbortController();
-
     apiClient
       .get<FetchGamesResponse>("/games", {signal: controller.signal}) // FetchGamesResponse defined above to limit the res format
       .then((res) => setGames(res.data.results))
