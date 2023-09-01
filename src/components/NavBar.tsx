@@ -1,7 +1,6 @@
 import { HStack, Image, Text } from "@chakra-ui/react"; // horizontal stack
 import logo from "../assets/logo.webp"; // import image from the folder
 import ColorModeSwitch from "./ColorModeSwitch";
-import GenreList from "./GenreList";
 
 const NavBar = () => {
   return (

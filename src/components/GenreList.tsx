@@ -1,7 +1,20 @@
-import { HStack, Image, List, ListItem, Spinner, Text } from "@chakra-ui/react";
-import useGenre from "../hooks/useGenres";
+import {
+  Button,
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Spinner,
+  Text,
+} from "@chakra-ui/react";
+import useGenre, { Genre } from "../hooks/useGenres";
 
-const GenreList = () => {
+interface GenreListProps {
+  onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
+}
+
+const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
   const { data, isLoading, error } = useGenre();
 
   return (
@@ -11,6 +24,7 @@ const GenreList = () => {
     //   ))}
     // </ul>
 
+    // if there is an error, just show error messages and add spinner when the data is loading
     <List>
       {isLoading && <Spinner></Spinner>}
       {error && <Text>{error}</Text>}
@@ -22,7 +36,16 @@ const GenreList = () => {
               boxSize="32px"
               borderRadius={8}
             ></Image>
-            <Text fontSize="lg"> {genre.name}</Text>
+            <Button
+              fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+              fontSize="lg"
+              variant="link"
+              onClick={() => {
+                onSelectGenre(genre);
+              }}
+            >
+              {genre.name}
+            </Button>
           </HStack>
         </ListItem>
       ))}

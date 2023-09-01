@@ -10,7 +10,6 @@ import {
   FaXbox,
 } from "react-icons/fa";
 import { MdPhoneIphone } from "react-icons/md";
-import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons/lib";
 interface PlatformIconListProps {
@@ -31,7 +30,11 @@ const PlatformIconList = ({ platforms }: PlatformIconListProps) => {
     <>
       <HStack marginY={1}>
         {platforms.map((platform) => (
-          <Icon as={iconMap[platform.slug]} color="gray.500"></Icon>
+          <Icon
+            key={platform.id}
+            as={iconMap[platform.slug]}
+            color="gray.500"
+          ></Icon>
         ))}
       </HStack>
     </>
