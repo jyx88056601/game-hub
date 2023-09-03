@@ -25,6 +25,7 @@ export interface Platform {
     genre: Genre | null;
     platform: Platform | null;
     sortOrder : string;
+    searchText: string;
   }
 
   
