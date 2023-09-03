@@ -1,7 +1,7 @@
-import { Card, CardBody, Heading, HStack, Image, Text } from "@chakra-ui/react";
-import { Game } from "../hooks/useGames";
+import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
+import { Game } from "../hooks/interfaces";
 import PlatformIconList from "./PlatformIconList";
-import CritiScore from "./criticScore";
+import CritiScore from "./CriticScore";
 
 import getCroppedImageUrl from "../services/image-url";
 // Game is just an interface and it has nothing to do with data

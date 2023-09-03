@@ -3,15 +3,14 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
-import { Genre } from "../hooks/useGenres";
-import { Platform } from "../hooks/usePlatforms";
+import { Genre, Platform } from "../hooks/interfaces";
 interface GameGridProps {
   selectGenre: Genre | null;
   selectedPlatform: Platform | null;
 }
 
 const GameGrid = ({ selectGenre, selectedPlatform }: GameGridProps) => {
-  const { data, error, isLoading } = useGames(selectGenre, selectedPlatform);
+  const { data, error, isLoading } = useGames(selectGenre, selectedPlatform); // get data
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 
@@ -35,6 +34,7 @@ const GameGrid = ({ selectGenre, selectedPlatform }: GameGridProps) => {
               <GameCardSkeleton key={skeleton}></GameCardSkeleton>
             </GameCardContainer>
           ))}
+
         {data.map((game) => (
           <GameCardContainer key={game.id}>
             <GameCard key={game.id} game={game}></GameCard>

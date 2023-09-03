@@ -1,9 +1,5 @@
 import useData from "./useData";
-export interface Genre {
-    id: number;
-    name: string;
-    image_background: string;
-  }
+import {Genre} from "../hooks/interfaces"
 const useGenre = ()=> useData<Genre>("./genres");
 export default useGenre;
 

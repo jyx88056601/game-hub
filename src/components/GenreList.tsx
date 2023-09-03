@@ -7,8 +7,9 @@ import {
   Spinner,
   Text,
 } from "@chakra-ui/react";
-import useGenre, { Genre } from "../hooks/useGenres";
-
+import useGenre from "../hooks/useGenres";
+import { Genre } from "../hooks/interfaces";
+// define an inteface(restricted conditions) of list
 interface GenreListProps {
   onSelectGenre: (genre: Genre) => void;
   selectedGenre: Genre | null;
