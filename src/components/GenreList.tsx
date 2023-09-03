@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import useGenre from "../hooks/useGenres";
 import { Genre } from "../hooks/interfaces";
+import useLocalGenres from "../hooks/useLocalGenres";
 // define an inteface(restricted conditions) of list
 interface GenreListProps {
   onSelectGenre: (genre: Genre) => void;
@@ -17,8 +18,8 @@ interface GenreListProps {
 }
 
 const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
-  const { data, isLoading, error } = useGenre();
-
+  // const { data, isLoading, error } = useGenre(); // dynamically
+  const { data, isLoading, error } = useLocalGenres(); // statically from local files
   return (
     // <ul>
     //   {data.map((genre) => (

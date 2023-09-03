@@ -11,6 +11,7 @@ export interface Platform {
     parent_platforms: {platform : Platform}[];
     platforms: {}[];
     metacritic: number;
+    rating_top: number
   }
 
   export interface Genre {
