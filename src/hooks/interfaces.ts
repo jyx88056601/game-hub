@@ -19,7 +19,12 @@ export interface Platform {
     image_background: string;
   } 
 
+
+
   export interface GameQuery {
     genre: Genre | null;
     platform: Platform | null;
+    sortOrder : string;
   }
+
+  
