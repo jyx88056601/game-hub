@@ -12,11 +12,10 @@ const GameGrid = ({ gameQuery }: GameGridProps) => {
   const { data, error, isLoading } = useGames(gameQuery); // get data
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-
+  if (error) return <Text>{error}</Text>;
   return (
     // display the Game[] to the webpage as a list and deal with the error condition
     <>
-      {error && <Text>{error}</Text>}
       {/* <ul>
         {data.map((game) => (
           <li key={game.id}>{game.name}</li>

@@ -1,4 +1,4 @@
-import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
+import { Card, CardBody, Heading, HStack, Image, Link } from "@chakra-ui/react";
 import { Game } from "../hooks/interfaces";
 import PlatformIconList from "./PlatformIconList";
 import CritiScore from "./CriticScore";
@@ -22,6 +22,7 @@ const GameCard = ({ game }: GameCardProps) => {
         </HStack>
         <HStack justifyContent="space-between" marginTop="5px">
           <Heading fontSize="xl">{game.name}</Heading>
+
           <Emoji rating={game.rating_top}></Emoji>
         </HStack>
       </CardBody>
