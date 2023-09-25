@@ -18,8 +18,8 @@ interface GenreListProps {
 }
 
 const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
-  // const { data, isLoading, error } = useGenre(); // dynamically
-  const { data, isLoading, error } = useLocalGenres(); // statically from local files
+  const { data, isLoading, error } = useGenre(); // dynamically
+  // const { data, isLoading, error } = useLocalGenres(); // statically from local files
   return (
     // <ul>
     //   {data.map((genre) => (
@@ -32,8 +32,8 @@ const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
       <Heading marginY="10px">Genres</Heading>
       <List>
         {isLoading && <Spinner></Spinner>}
-        {error && <Text>{error}</Text>}
-        {data.map((genre) => (
+        {error && <Text>{error.message}</Text>}
+        {data?.results.map((genre) => (
           <ListItem key={genre.id} padding="5px">
             <HStack>
               <Image

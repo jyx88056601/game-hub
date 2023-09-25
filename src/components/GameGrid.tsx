@@ -12,7 +12,7 @@ const GameGrid = ({ gameQuery }: GameGridProps) => {
   const { data, error, isLoading } = useGames(gameQuery); // get data
 
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-  if (error) return <Text>{error}</Text>;
+  if (error) return <Text>{error.message}</Text>;
   return (
     // display the Game[] to the webpage as a list and deal with the error condition
     <>
@@ -33,7 +33,7 @@ const GameGrid = ({ gameQuery }: GameGridProps) => {
             </GameCardContainer>
           ))}
 
-        {data.map((game) => (
+        {data?.results.map((game) => (
           <GameCardContainer key={game.id}>
             <GameCard key={game.id} game={game}></GameCard>
           </GameCardContainer>

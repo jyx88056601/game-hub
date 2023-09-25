@@ -1,11 +1,8 @@
-import { AxiosRequestConfig, CanceledError } from "axios";
-import { useEffect, useState } from "react";
+ import { AxiosRequestConfig, CanceledError } from "axios";
+import { useEffect, useState } from "react"; 
+import { useQuery } from "@tanstack/react-query";
 import apiClient from "../services/api-client";
-
-interface FetchResponse<T> {
-  count: number;
-  results: T[];
-}
+import { FetchResponse, Platform } from "../hooks/interfaces";
  
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
   const [data, setData] = useState<T[]>([]);
@@ -32,4 +29,11 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
  
 
 };
+
+// const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => useQuery({
+//   queryKey: ["games"],
+//   queryFn: () =>  apiClient.get<FetchResponse<T>>(endpoint).then(res => res.data)
+// })
+
+
 export default useData;
