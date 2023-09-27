@@ -1,4 +1,4 @@
-// import useData from "./useData";
+import useData from "./useData"; // previous hook to get the data
 import {Genre, FetchResponse} from "../hooks/interfaces"
 import { useQuery } from "@tanstack/react-query"
 import apiClient from "../services/api-client"; 
