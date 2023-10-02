@@ -9,6 +9,7 @@ import GameHeading from "./components/GameHeading";
 import { GameQuery } from "./hooks/interfaces";
 
 function App() {
+  // game query changes then re-render
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
 
   return (
