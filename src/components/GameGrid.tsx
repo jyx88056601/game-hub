@@ -1,11 +1,13 @@
-import { Box, Button, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Button, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 // import useGames from "../hooks/useGames";
 import useInfiniteGames from "./useInfiniteGames";
 import GameCard from "./GameCard";
 import GameCardContainer from "./GameCardContainer";
 import GameCardSkeleton from "./GameCardSkeleton";
 import { GameQuery } from "../hooks/interfaces";
+import InfiniteScroll from "react-infinite-scroll-component";
 import React from "react";
+
 interface GameGridProps {
   gameQuery: GameQuery;
 }
@@ -17,6 +19,10 @@ const GameGrid = ({ gameQuery }: GameGridProps) => {
   const {data, fetchNextPage, isFetchingNextPage, hasNextPage, error, isLoading } =  useInfiniteGames(gameQuery);
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
   if (error) return <Text>{error.message}</Text>;
+
+  const fetchedGamesCount = data?.pages.reduce(
+     (total, page) => total + page.results.length, 0
+    )|| 0;
   return (
     // display the Game[] to the webpage as a list and deal with the error condition
     <Box padding="5px">
@@ -25,6 +31,8 @@ const GameGrid = ({ gameQuery }: GameGridProps) => {
           <li key={game.id}>{game.name}</li>
         ))}
       </ul> */}
+    
+      <InfiniteScroll next={() => fetchNextPage()} hasMore={hasNextPage || false} loader={<Spinner></Spinner>} dataLength={fetchedGamesCount}>
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         spacing={3}
@@ -54,7 +62,10 @@ const GameGrid = ({ gameQuery }: GameGridProps) => {
           </GameCardContainer>
         ))} THIS IS WITH USEGAMES HOOK*/}
       </SimpleGrid>
-      {hasNextPage && <Button marginY="5px" onClick={()=>fetchNextPage()}>{isFetchingNextPage ? "Loading..." : "Load more"}</Button>} 
+      {isFetchingNextPage? "Loading...": ""}
+      </InfiniteScroll>
+      {/* LOAD button version
+      {hasNextPage && <Button marginY="5px" onClick={()=>fetchNextPage()}>{isFetchingNextPage ? "Loading..." : "Load more"}</Button>}  */}
     </Box>
   );
 };
