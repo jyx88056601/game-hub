@@ -20,10 +20,13 @@ export interface Genre {
   image_background: string;
 }
 
+// undefined: the absense of a value
+// null: the intentional absense of a value
+// simplified GameQuery interface 
 
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  genreId?: number;
+  platformId?: number;
   sortOrder: string;
   searchText: string;
 }

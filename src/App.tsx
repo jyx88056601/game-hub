@@ -31,8 +31,8 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" padding={5}>
           <GenreList
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
-            selectedGenre={gameQuery.genre}
+            onSelectGenreId={(genre) => setGameQuery({ ...gameQuery, genreId: genre.id })}
+            selectedGenreId={gameQuery.genreId}
           ></GenreList>
         </GridItem>
       </Show>
@@ -41,10 +41,10 @@ function App() {
         <Flex paddingLeft={2} marginBottom={5}>
           <Box marginRight={5}>
             <PlatformSelector
+              selectedPlatformId= {gameQuery.platformId}
               onSelectedPlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
+                setGameQuery({ ...gameQuery, platformId: platform.id })
               }
-              selectedPlatform={gameQuery.platform}
             ></PlatformSelector>
           </Box>
           <Box marginRight={5}>

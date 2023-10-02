@@ -13,11 +13,11 @@ import { Genre } from "../hooks/interfaces";
 import useLocalGenres from "../hooks/useLocalGenres";
 // define an inteface(restricted conditions) of list
 interface GenreListProps {
-  onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  onSelectGenreId: (genre: Genre) => void;
+  selectedGenreId?: number;
 }
 
-const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
+const GenreList = ({ onSelectGenreId: onSelectGenre, selectedGenreId }: GenreListProps) => {
   const { data, isLoading, error } = useGenre(); // dynamically
   // const { data, isLoading, error } = useLocalGenres(); // statically from local files
   return (
@@ -45,7 +45,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
               <Button
                 textAlign="left"
                 whiteSpace={"normal"}
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 fontSize="lg"
                 variant="link"
                 onClick={() => {

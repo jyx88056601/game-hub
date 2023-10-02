@@ -18,8 +18,8 @@ const useGames = (gameQuery: GameQuery) => {
     // .then(res => res.data)
     queryFn: () => api.getData({
       params: {
-        genres: gameQuery.genre?.id,
-        parent_platforms: gameQuery.platform?.id,
+        genres: gameQuery.genreId,
+        parent_platforms: gameQuery.platformId,
         ordering: gameQuery.sortOrder,
         search: gameQuery.searchText
       }
