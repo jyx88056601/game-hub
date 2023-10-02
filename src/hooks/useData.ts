@@ -1,8 +1,7 @@
 import { AxiosRequestConfig, CanceledError } from "axios";
-import { useEffect, useState } from "react";  
-import apiClient from "../services/api-client";
-import { FetchResponse, Platform } from "../hooks/interfaces";
- 
+import { useEffect, useState } from "react";   
+import { FetchResponse  } from "../hooks/interfaces";
+import axios from "axios";
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState("");
@@ -11,7 +10,12 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
-    apiClient
+    axios.create({
+      baseURL: "https://api.rawg.io/api",
+      params:{
+          key: "f91e1a66244b41d38e66ecaeb0297fa0"
+      }
+  })
       .get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig })
       .then((res) => {
         setData(res.data.results);

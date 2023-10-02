@@ -1,15 +1,11 @@
-import useData from "./useData"; // previous hook to get the data
 import {FetchResponse, Game, GameQuery} from "../hooks/interfaces" 
 import { useQuery } from  "@tanstack/react-query"
-import apiClient from "../services/api-client";
 import APIClient from "../services/apiClient";
 
 const api = new APIClient<Game>("/games");
 
 const useGames = (gameQuery: GameQuery) => {
   // anytime the variables below changes, refetching the data from server
- 
-
   return useQuery<FetchResponse<Game>,Error>({
     queryKey: ["games", gameQuery],
     // params : {
