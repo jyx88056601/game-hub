@@ -1,12 +1,12 @@
-import {FetchResponse, Game, GameQuery} from "../hooks/interfaces" 
-import { useQuery } from  "@tanstack/react-query"
+import { FetchResponse, Game, GameQuery } from "../hooks/interfaces"
+import { useQuery } from "@tanstack/react-query"
 import APIClient from "../services/apiClient";
 
 const api = new APIClient<Game>("/games");
 
 const useGames = (gameQuery: GameQuery) => {
   // anytime the variables below changes, refetching the data from server
-  return useQuery<FetchResponse<Game>,Error>({
+  return useQuery<FetchResponse<Game>, Error>({
     queryKey: ["games", gameQuery],
     // params : {
     //   genres: gameQuery.genre?.id,
@@ -16,8 +16,8 @@ const useGames = (gameQuery: GameQuery) => {
     // }
     // queryFn: () => apiClient.get<FetchResponse<Game>>("/games", {params: params})
     // .then(res => res.data)
-    queryFn:  () => api.getData({ 
-      params : {
+    queryFn: () => api.getData({
+      params: {
         genres: gameQuery.genre?.id,
         parent_platforms: gameQuery.platform?.id,
         ordering: gameQuery.sortOrder,
@@ -30,4 +30,3 @@ const useGames = (gameQuery: GameQuery) => {
 
 export default useGames
 
-  
