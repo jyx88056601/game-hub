@@ -1,7 +1,7 @@
 import { FetchResponse, Game, GameQuery } from "../hooks/interfaces"
 import { useQuery } from "@tanstack/react-query"
 import APIClient from "../services/apiClient";
-
+import ms from "ms";
 const api = new APIClient<Game>("/games");
 
 const useGames = (gameQuery: GameQuery) => {
@@ -24,7 +24,7 @@ const useGames = (gameQuery: GameQuery) => {
         search: gameQuery.searchText
       }
     }),
-    staleTime: 24 * 60 * 60 * 1000,
+    staleTime: ms("24h"),
   });
 };
 

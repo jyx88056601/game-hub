@@ -5,11 +5,16 @@ import CritiScore from "./CriticScore";
 import Emoji from "./Emoji";
 import getCroppedImageUrl from "../services/image-url";
 
+
 // Game is just an interface and it has nothing to do with data
 interface GameCardProps {
   game: Game;
 }
+
+
+
 const GameCard = ({ game }: GameCardProps) => {
+ 
   return (
     <Card>
       <Image src={getCroppedImageUrl(game.background_image)}></Image>

@@ -33,7 +33,7 @@ const GameGrid = ({ gameQuery }: GameGridProps) => {
       </ul> */}
     
       <InfiniteScroll next={() => fetchNextPage()} hasMore={hasNextPage || false} loader={<Spinner></Spinner>} dataLength={fetchedGamesCount}>
-      <SimpleGrid
+      <SimpleGrid 
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         spacing={3}
       >
@@ -46,9 +46,9 @@ const GameGrid = ({ gameQuery }: GameGridProps) => {
           
         { /* useInfiniteGames hook*/
         data?.pages.map((page, index) => (
-            <React.Fragment>
+            <React.Fragment  key={index}>
               {page.results.map((game) =>
-                  <GameCardContainer key = {index}>
+                  <GameCardContainer key={game.id}>
                       <GameCard game = {game} key = {game.id}></GameCard>
                   </GameCardContainer>)
               }

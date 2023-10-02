@@ -8,7 +8,8 @@ import {
   Spinner,
   Text,
 } from "@chakra-ui/react";
-import useGenre from "../hooks/useGenres";
+import useGenres from "../hooks/useGenres";
+import useGenre from  "../hooks/useGenre";
 import { Genre } from "../hooks/interfaces";
 import useLocalGenres from "../hooks/useLocalGenres";
 // define an inteface(restricted conditions) of list
@@ -18,8 +19,9 @@ interface GenreListProps {
 }
 
 const GenreList = ({ onSelectGenreId: onSelectGenre, selectedGenreId }: GenreListProps) => {
-  const { data, isLoading, error } = useGenre(); // dynamically
+  const { data, isLoading, error } = useGenres(); // dynamically
   // const { data, isLoading, error } = useLocalGenres(); // statically from local files
+
   return (
     // <ul>
     //   {data.map((genre) => (
