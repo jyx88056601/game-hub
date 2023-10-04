@@ -12,16 +12,19 @@ import useGenres from "../hooks/useGenres";
 import useGenre from  "../hooks/useGenre";
 import { Genre } from "../hooks/interfaces";
 import useLocalGenres from "../hooks/useLocalGenres";
-// define an inteface(restricted conditions) of list
-interface GenreListProps {
-  onSelectGenreId: (genre: Genre) => void;
-  selectedGenreId?: number;
-}
+import useGameQueryStore from "../services/store";
 
-const GenreList = ({ onSelectGenreId: onSelectGenre, selectedGenreId }: GenreListProps) => {
+// define an inteface(restricted conditions) of list
+// interface GenreListProps {
+//   onSelectGenreId: (genre: Genre) => void;
+//   selectedGenreId?: number;
+// }
+
+const GenreList = ( ) => {
   const { data, isLoading, error } = useGenres(); // dynamically
   // const { data, isLoading, error } = useLocalGenres(); // statically from local files
-
+  const selectedGenreId = useGameQueryStore( s => s.gameQuery.genreId);
+  const setSelectedGenreId = useGameQueryStore( s => s.setGenreId);
   return (
     // <ul>
     //   {data.map((genre) => (
@@ -50,9 +53,7 @@ const GenreList = ({ onSelectGenreId: onSelectGenre, selectedGenreId }: GenreLis
                 fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 fontSize="lg"
                 variant="link"
-                onClick={() => {
-                  onSelectGenre(genre);
-                }}
+                onClick={() =>  setSelectedGenreId(genre.id)}
               >
                 {genre.name}
               </Button>

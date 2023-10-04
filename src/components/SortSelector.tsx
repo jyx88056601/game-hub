@@ -1,15 +1,10 @@
 import { Menu, MenuButton, Button, MenuList, MenuItem } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-
-interface SortSelectorProps {
-  onSelectSortOrder: (sortOrder: string) => void;
-  sortOrder: string | null;
-}
-
-const SortSelector = ({ onSelectSortOrder, sortOrder }: SortSelectorProps) => {
-  /*ordering	string
-Available fields: name, released, added, created, updated, rating, metacritic. 
-You can reverse the sort order adding a hyphen, for example: -released. */
+import useGameQueryStore from "../services/store";
+ 
+const SortSelector = () => { 
+  const sortOrder = useGameQueryStore(s => s.gameQuery.sortOrder);
+  const setOrder = useGameQueryStore(s => s.setSortOrder);
 
   const sortOrders = [
     { value: "", lable: "Relavance" },
@@ -30,7 +25,7 @@ You can reverse the sort order adding a hyphen, for example: -released. */
       <MenuList>
         {sortOrders.map((order) => (
           <MenuItem
-            onClick={() => onSelectSortOrder(order.value)}
+            onClick={() => setOrder(order.value)}
             value={order.value}
             key={order.value}
           >

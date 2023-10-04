@@ -3,16 +3,13 @@ import logo from "../assets/logo.webp"; // import image from the folder
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "../components/SearchInput";
 
-interface SearchInputProps {
-  onSearch: (searchText: string) => void;
-}
-const NavBar = ({ onSearch }: SearchInputProps) => {
+const NavBar = () => {
   return (
     // HStack: horizontal stack
     // justifyContent="space-between": move the swith to the right side and padding is to create space to the right side
     <HStack padding="10px">
       <Image src={logo} boxSize="60px"></Image>
-      <SearchInput onSearch={onSearch}></SearchInput>
+      <SearchInput></SearchInput>
       <ColorModeSwitch></ColorModeSwitch>
     </HStack>
   );
