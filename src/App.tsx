@@ -6,10 +6,7 @@ import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";  
 
-function App() {
-  // game query changes then re-render
-  // const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
- 
+function App() { 
   return (
     <Grid
       templateAreas={{
@@ -22,7 +19,7 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar></NavBar>
+        <NavBar />
       </GridItem>
  
       <Show above="lg">

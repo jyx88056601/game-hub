@@ -12,6 +12,7 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { BsGlobe } from "react-icons/bs";
 import { IconType } from "react-icons/lib";
+
 interface PlatformIconListProps {
   platforms: Platform[];
 }

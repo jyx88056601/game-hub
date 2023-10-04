@@ -9,20 +9,14 @@ import {
   Text,
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
-import useGenre from  "../hooks/useGenre";
-import { Genre } from "../hooks/interfaces";
+import useGenre from  "../hooks/useGenre"; 
 import useLocalGenres from "../hooks/useLocalGenres";
 import useGameQueryStore from "../services/store";
-
-// define an inteface(restricted conditions) of list
-// interface GenreListProps {
-//   onSelectGenreId: (genre: Genre) => void;
-//   selectedGenreId?: number;
-// }
 
 const GenreList = ( ) => {
   const { data, isLoading, error } = useGenres(); // dynamically
   // const { data, isLoading, error } = useLocalGenres(); // statically from local files
+
   const selectedGenreId = useGameQueryStore( s => s.gameQuery.genreId);
   const setSelectedGenreId = useGameQueryStore( s => s.setGenreId);
   return (
