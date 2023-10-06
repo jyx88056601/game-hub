@@ -1,6 +1,6 @@
 import { AxiosRequestConfig, CanceledError } from "axios";
 import { useEffect, useState } from "react";
-import { FetchResponse } from "../hooks/interfaces";
+import { FetchResponse } from "./entities";
 import axios from "axios";
 
 // useData is used to get Data from server by useEffect hook

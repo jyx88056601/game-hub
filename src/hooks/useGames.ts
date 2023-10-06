@@ -1,4 +1,4 @@
-import { FetchResponse, Game, GameQuery } from "../hooks/interfaces"
+import { FetchResponse, Game, GameQuery } from "./entities"
 import { useQuery } from "@tanstack/react-query"
 import APIClient from "../services/apiClient";
 import ms from "ms";

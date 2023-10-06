@@ -4,10 +4,17 @@ export interface Platform {
   slug: string;
 }
 
+export interface Publisher {
+  name: string;
+  id: number;
+}
+
 export interface Game {
   id: number;
   name: string;
   slug: string;
+  genres: Genre[];
+  publishers: Publisher[];
   background_image: string;
   parent_platforms: { platform: Platform }[];
   description_raw: string;
@@ -43,4 +50,18 @@ export interface InfiniteFetchResponse<T> {
   count: number;
   results: T[];
   next: string | null;
+}
+
+export interface Trailer {
+  id: number;
+  name: string;
+  preview: string;
+  data: { 480: string; max: string }
+}
+
+export interface ScreenShot {
+  id: number;
+  image: string;
+  width: number;
+  height: number;
 }

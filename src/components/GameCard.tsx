@@ -1,5 +1,5 @@
 import { Card, CardBody, Heading, HStack, Image } from "@chakra-ui/react";
-import { Game } from "../hooks/interfaces";
+import { Game } from "../hooks/entities";
 import PlatformIconList from "./PlatformIconList";
 import CritiScore from "./CriticScore";
 import Emoji from "./Emoji";

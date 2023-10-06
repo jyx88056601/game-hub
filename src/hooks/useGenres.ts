@@ -1,4 +1,4 @@
-import { Genre, FetchResponse } from "../hooks/interfaces"
+import { Genre, FetchResponse } from "./entities"
 import { useQuery } from "@tanstack/react-query"
 import initialGenres from "../data/initialGenres";
 import APIClient from "../services/apiClient";
