@@ -7,7 +7,7 @@ interface GemeCardContainerProps {
 
 const GameCardContainer = ({ children }: GemeCardContainerProps) => {
   return (
-    <Box width="100%" borderRadius={10} overflow="hidden">
+    <Box _hover= {{transform: "scale(1.05)", transition: "transform .15s ease-in"}} width="100%" borderRadius={10} overflow="hidden">
       {children}
     </Box>
   );

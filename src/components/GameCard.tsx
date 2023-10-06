@@ -4,6 +4,7 @@ import PlatformIconList from "./PlatformIconList";
 import CritiScore from "./CriticScore";
 import Emoji from "./Emoji";
 import getCroppedImageUrl from "../services/image-url";
+import { Link } from "react-router-dom";
 
 // Game is just an interface and it has nothing to do with data
 interface GameCardProps {
@@ -22,8 +23,9 @@ const GameCard = ({ game }: GameCardProps) => {
           <CritiScore score={game.metacritic}></CritiScore>
         </HStack>
         <HStack justifyContent="space-between" marginTop="5px">
-          <Heading fontSize="xl">{game.name}</Heading>
-
+            <Heading fontSize="xl">
+             <Link to={"/games/" + game.slug}>{game.name}</Link>
+            </Heading>
           <Emoji rating={game.rating_top}></Emoji>
         </HStack>
       </CardBody>
