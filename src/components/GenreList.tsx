@@ -9,8 +9,6 @@ import {
   Text,
 } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
-import useGenre from  "../hooks/useGenre"; 
-import useLocalGenres from "../hooks/useLocalGenres";
 import useGameQueryStore from "../services/store";
 
 const GenreList = ( ) => {
@@ -20,13 +18,6 @@ const GenreList = ( ) => {
   const selectedGenreId = useGameQueryStore( s => s.gameQuery.genreId);
   const setSelectedGenreId = useGameQueryStore( s => s.setGenreId);
   return (
-    // <ul>
-    //   {data.map((genre) => (
-    //     <li key={genre.id}>{genre.name}</li>
-    //   ))}
-    // </ul>
-
-    // if there is an error, just show error messages and add spinner when the data is loading
     <>
       <Heading marginY="10px">Genres</Heading>
       <List>

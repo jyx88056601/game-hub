@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    // HStack: horizontal stack
     // justifyContent="space-between": move the swith to the right side and padding is to create space to the right side
     <HStack padding="10px">
       <Link to="/">
